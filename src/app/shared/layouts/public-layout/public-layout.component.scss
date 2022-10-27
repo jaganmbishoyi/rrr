@@ -1,0 +1,22 @@
+@import "../../../../assets/styles/variable.scss";
+
+.public-header {
+    position: fixed;
+    width: 100%;
+    height: $header-height;
+    box-shadow: 0 1px 15px rgba(0, 0, 0, 0.04), 0 1px 6px rgba(0, 0, 0, 0.04);
+    z-index: 100;
+    top: 0;
+}
+
+.body-content {
+    margin-top: $header-height;
+    min-height: calc(90vh - #{$header-height});
+}
+
+@media only screen and (max-width: 1200px) {
+    .body-content {
+        margin-top: $header-height-responsive-view;
+        min-height: calc(70vh - #{$header-height-responsive-view});
+    }
+}
