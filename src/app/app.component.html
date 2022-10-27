@@ -506,4 +506,8 @@
 
 </div> -->
 
-<router-outlet></router-outlet>
+<router-outlet>
+    <ng-http-loader [debounceDelay]="100" [extraDuration]="200" [minDuration]="300" [opacity]="0.7"
+        [filteredHeaders]="['hideLoader']">
+    </ng-http-loader>
+</router-outlet>
