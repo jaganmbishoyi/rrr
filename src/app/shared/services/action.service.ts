@@ -13,6 +13,7 @@ export class ActionService {
     ) {}
 
     providerLogin(body: any): Observable<any> {
+        body.mobileNumber = String(body.mobileNumber)
         return this.http.post<any>(
             this.constantService.getUrl(this.constantService.PROVIDERS_LOGIN),
             body

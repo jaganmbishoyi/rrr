@@ -25,14 +25,14 @@
         <div class="input-group-prepend">
             <label class="input-group-text" for="type">Type</label>
         </div>
-        <select class="custom-select" id="type" formControlName="typeId">
+        <select class="custom-select" id="type" formControlName="type">
             <option value="orphanage">Orphanage</option>
             <option value="oldage_homes">Oldage homes</option>
             <option value="hotspot">Hotspot</option>
             <option value="other">Other</option>
         </select>
     </div>
-    <div class="form-group" *ngIf="form.get('typeId').value === 'other'">
+    <div class="form-group" *ngIf="form.get('type').value === 'other'">
         <label for="otherType">Other type<span class="text-danger ml-1">*</span></label>
         <input type="text" class="form-control" id="otherType" placeholder="Enter other type"
             formControlName="location">

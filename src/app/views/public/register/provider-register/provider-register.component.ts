@@ -27,7 +27,7 @@ export class ProviderRegisterComponent implements OnInit, OnDestroy {
 
     initForm(): void {
         this.form = this.formBuilder.group({
-            id: ["", Validators.compose([])],
+            id: [0, Validators.compose([])],
             name: ["", Validators.compose([Validators.required])],
             address: ["", Validators.compose([Validators.required])],
             contactNumber: ["", Validators.compose([Validators.required])],

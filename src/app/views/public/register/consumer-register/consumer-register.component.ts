@@ -27,22 +27,22 @@ export class ConsumerRegisterComponent implements OnInit, OnDestroy {
 
     initForm(): void {
         this.form = this.formBuilder.group({
-            id: ["", Validators.compose([])],
+            id: [0, Validators.compose([])],
             name: ["", Validators.compose([Validators.required])],
             address: ["", Validators.compose([Validators.required])],
             contactNo: ["", Validators.compose([Validators.required])],
             contactPerson: ["", Validators.compose([Validators.required])],
             location: ["", Validators.compose([Validators.required])],
-            numberOfPersons: ["", Validators.compose([Validators.required])],
-            typeId: ["orphanage", Validators.compose([Validators.required])],
+            numberOfPersons: [null, Validators.compose([Validators.required])],
+            type: ["orphanage", Validators.compose([Validators.required])],
             verified: [false, Validators.compose([Validators.required])],
             password: ["", Validators.compose([Validators.required])],
-            otherType: [null, Validators.compose([Validators.required])],
+            otherType: [null],
             createdDate: [
                 new Date(),
                 Validators.compose([Validators.required]),
             ],
-            updatedDate: [null, Validators.compose([Validators.required])],
+            updatedDate: [null],
         });
     }
 
