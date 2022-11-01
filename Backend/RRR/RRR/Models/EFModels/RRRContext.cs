@@ -56,6 +56,10 @@ namespace RRR.Models.EFModels
 
                 entity.Property(e => e.Password).IsRequired();
 
+                entity.Property(e => e.Type)
+                    .IsRequired()
+                    .HasMaxLength(150);
+
                 entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
             });
 

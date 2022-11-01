@@ -14,7 +14,7 @@ namespace RRR.Models.EFModels
         public string ContactPerson { get; set; }
         public string Location { get; set; }
         public int NumberOfPersons { get; set; }
-        public int TypeId { get; set; }
+        public string Type { get; set; }
         public bool? Verified { get; set; }
         public string Password { get; set; }
         public string OtherType { get; set; }
