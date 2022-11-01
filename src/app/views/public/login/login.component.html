@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row">
+        <div class="offset-md-3 col-md-6">
+            <h4 class="text-center mb-5">Login</h4>
+            <form [formGroup]="form">
+                <div class="btn-group mb-3">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Login as
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" (click)="selectLoginType(login?.name)"
+                            *ngFor="let login of loginTypes">
+                            {{login?.name}}
+                        </a>
+                    </div>
+                    <span class="selected-login-type">
+                        {{selectedLoginType}}
+                    </span>
+                </div>
+
+                <div class="form-group">
+                    <label for="mobileNumber">Mobile Number<span class="text-danger ml-1">*</span></label>
+                    <input type="number" class="form-control" id="mobileNumber" placeholder="Enter mobile number"
+                        formControlName="mobileNumber">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password<span class="text-danger ml-1">*</span></label>
+                    <input type="password" class="form-control" id="password" placeholder="Password"
+                        formControlName="password">
+                </div>
+
+                <button type="button" class="btn btn-primary mt-4" (click)="login()">Login</button>
+            </form>
+        </div>
+    </div>
+</div>
