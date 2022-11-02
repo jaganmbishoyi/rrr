@@ -50,8 +50,14 @@ namespace RRR.Controllers
 
                     return decodedString == authModel.Password ? Ok(new
                     {
-                        validateUser.Name,
-                        validateUser.Address
+                        Id = validateUser.Id,
+                        Name = validateUser.Name,
+                        Address = validateUser.Address,
+                        ContactNumber = validateUser.ContactNumber,
+                        ContactPerson = validateUser.ContactPerson,
+                        Location = validateUser.Location,
+                        Verified = validateUser.Verified,
+                        CreatedDate = validateUser.CreatedDate
                     }) : BadRequest();
                 }
                 else
