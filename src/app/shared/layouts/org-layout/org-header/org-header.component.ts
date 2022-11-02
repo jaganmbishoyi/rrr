@@ -14,6 +14,9 @@ export class OrgHeaderComponent implements OnInit {
 
     ngOnInit(): void {
         this.userDetails = JSON.parse(this.service.getLS("user-details"));
+        this.service.watchStorage().subscribe((res: any) => {
+            this.userDetails = JSON.parse(this.service.getLS("user-details"));
+        });
     }
 
     logout(): void {

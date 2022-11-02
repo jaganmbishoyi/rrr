@@ -1,22 +1,29 @@
 import { isPlatformBrowser } from "@angular/common";
 import { HttpClient } from "@angular/common/http";
 import { Inject, Injectable, PLATFORM_ID } from "@angular/core";
-import { Observable } from "rxjs";
+import { Observable, Subject } from "rxjs";
 import { ConstantService } from "./constant.service";
 
 @Injectable({
     providedIn: "root",
 })
 export class ActionService {
+    private storageSub = new Subject<string>();
+
     constructor(
         public http: HttpClient,
         public constantService: ConstantService,
         @Inject(PLATFORM_ID) private platformId: Object
     ) {}
 
+    watchStorage(): Observable<any> {
+        return this.storageSub.asObservable();
+    }
+
     setLS(key: string, value: string): void {
         if (isPlatformBrowser(this.platformId)) {
             localStorage.setItem(key, value);
+            this.storageSub.next("added");
         }
     }
 
