@@ -26,14 +26,10 @@ export class ActionService {
         }
     }
 
-    removeLS(key: string): void {
-        if (isPlatformBrowser(this.platformId)) {
-            localStorage.removeItem(key);
-        }
-    }
-
     clearLS(): void {
-        localStorage.clear();
+        if (isPlatformBrowser(this.platformId)) {
+            localStorage.clear();
+        }
     }
 
     providerLogin(body: any): Observable<any> {

@@ -11,22 +11,14 @@ export class ProvidersComponent implements OnInit, OnDestroy {
     subscriptions = new Subscription();
     consumers: any[] = [];
     providers: any[] = [];
-    userDetails: any = {
-        address: "Bangalore",
-        contactNumber: "8147592535",
-        contactPerson: "Ameer",
-        createdDate: "2022-10-31T00:00:00",
-        id: 1,
-        location: "https://goo.gl/maps/oYdNc2WaLwqFdamn9",
-        name: "Xyz",
-        verified: false,
-    };
+    userDetails: any = {};
 
     constructor(public service: ActionService) {}
 
     ngOnInit(): void {
+        this.userDetails = JSON.parse(this.service.getLS("user-details"));
         this.getConsumers();
-        this.getProviders();
+        // this.getProviders();
     }
 
     getConsumers(): void {

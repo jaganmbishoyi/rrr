@@ -1,12 +1,16 @@
 <div class="row">
-    <div class="col-12">
-        <h6>Providers Details:</h6>
+    <div class="col-12 mb-4">
+        <h6><u>Providers Details:</u></h6>
 
-        <p>{{userDetails?.name}}</p>
-
+        <p class="small mb-1 text-capitalize"><span style="font-weight: 500">Name:</span> {{userDetails?.name}}</p>
+        <p class="small mb-1"><span style="font-weight: 500">Address:</span> {{userDetails?.address}}</p>
+        <p class="small mb-1"><span style="font-weight: 500">Contact Number:</span> {{userDetails?.contactNumber}}</p>
+        <p class="small mb-1 text-capitalize"><span style="font-weight: 500">Contact Person:</span>
+            {{userDetails?.contactPerson }}</p>
+        <p class="small mb-1"><span style="font-weight: 500">Location:</span> {{userDetails?.location}}</p>
     </div>
     <div class="col-12">
-        <h6 class="mb-4">List of Consumers</h6>
+        <h6 class="mb-4"><u>List of Consumers:</u></h6>
         <div class="row">
             <div class="col-12 col-md-4 mb-3" *ngFor="let consumer of consumers">
                 <app-consumer-card [consumer]="consumer"></app-consumer-card>
