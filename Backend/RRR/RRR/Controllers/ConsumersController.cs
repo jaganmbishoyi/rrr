@@ -102,7 +102,7 @@ namespace RRR.Controllers
         {
             using (RRRContext con = new RRRContext())
             {
-                var consumerDetails = con.Consumers.FirstOrDefault(a => a.ContactNo.Equals(consumer.ContactNo));
+                var consumerDetails = con.Consumers.FirstOrDefault(a => a.Id == consumer.Id);
 
                 if (consumerDetails is null)
                 {

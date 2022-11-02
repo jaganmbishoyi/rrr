@@ -94,7 +94,7 @@ namespace RRR.Controllers
         {
             using (RRRContext con = new RRRContext())
             {
-                var providerDetails = con.Providers.FirstOrDefault(a => a.ContactNumber.Equals(provider.ContactNumber));
+                var providerDetails = con.Providers.FirstOrDefault(a => a.Id == provider.Id);
 
                 if(providerDetails is null)
                 {
