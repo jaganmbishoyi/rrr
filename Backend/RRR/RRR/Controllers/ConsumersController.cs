@@ -67,7 +67,21 @@ namespace RRR.Controllers
         {
             using (RRRContext con = new RRRContext())
             {
-                var providers = con.Consumers.ToList();
+                var providers = con.Consumers.Select(a => new
+                {
+                    Id = a.Id,
+                    Name = a.Name,
+                    Address = a.Address,
+                    ContactNo = a.ContactNo,
+                    ContactPerson = a.ContactPerson,
+                    Location = a.Location,
+                    Verified = a.Verified,
+                    CreatedDate = a.CreatedDate,
+                    NumberOfPersons = a.NumberOfPersons,
+                    Type = a.Type,
+                    OtherType = a.OtherType,
+                    UpdatedDate = a.UpdatedDate
+                }).ToList();
                 return Ok(providers);
             }
         }

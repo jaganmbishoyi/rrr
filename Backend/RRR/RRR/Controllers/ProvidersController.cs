@@ -17,10 +17,10 @@ namespace RRR.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] Provider provider)
         {
-            using(RRRContext con = new RRRContext())
+            using (RRRContext con = new RRRContext())
             {
                 var validateUser = con.Providers.Where(s => s.ContactNumber == provider.ContactNumber).FirstOrDefault();
-                if(validateUser == null)
+                if (validateUser == null)
                 {
                     byte[] getBytes = Encoding.UTF8.GetBytes(provider.Password);
                     string encryptPassword = Convert.ToBase64String(getBytes);
@@ -28,7 +28,8 @@ namespace RRR.Controllers
                     con.Providers.Add(provider);
                     con.SaveChanges();
                     return Ok();
-                } else
+                }
+                else
                 {
                     return BadRequest("User validation failed");
                 }
@@ -47,7 +48,8 @@ namespace RRR.Controllers
                     byte[] data = Convert.FromBase64String(validateUser.Password);
                     string decodedString = Encoding.UTF8.GetString(data);
 
-                    return decodedString == authModel.Password ? Ok(new {
+                    return decodedString == authModel.Password ? Ok(new
+                    {
                         validateUser.Name,
                         validateUser.Address
                     }) : BadRequest();
@@ -65,7 +67,17 @@ namespace RRR.Controllers
         {
             using (RRRContext con = new RRRContext())
             {
-                var providers = con.Providers.ToList();
+                var providers = con.Providers.Select(a => new
+                {
+                    Id = a.Id,
+                    Name = a.Name,
+                    Address = a.Address,
+                    ContactNumber = a.ContactNumber,
+                    ContactPerson = a.ContactPerson,
+                    Location = a.Location,
+                    Verified = a.Verified,
+                    CreatedDate = a.CreatedDate
+                }).ToList();
                 return Ok(providers);
             }
         }
