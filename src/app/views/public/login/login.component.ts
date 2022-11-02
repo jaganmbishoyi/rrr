@@ -61,9 +61,27 @@ export class LoginComponent implements OnInit, OnDestroy {
                         this.subscriptions.add(
                             this.service
                                 .providerLogin(this.form.value)
-                                .subscribe((res: any) => {
-                                    debugger;
-                                })
+                                .subscribe(
+                                    (res: any) => {
+                                        this.service.setLS(
+                                            "user-details",
+                                            JSON.stringify(res)
+                                        );
+                                        this.toaster.success(
+                                            "Login Successful",
+                                            "Successful!"
+                                        );
+                                        this.router.navigate([
+                                            "/organization/providers",
+                                        ]);
+                                    },
+                                    (error: any) => {
+                                        this.toaster.error(
+                                            "Wrong credentials!",
+                                            "Error!"
+                                        );
+                                    }
+                                )
                         );
                     }
                     break;
@@ -73,9 +91,27 @@ export class LoginComponent implements OnInit, OnDestroy {
                         this.subscriptions.add(
                             this.service
                                 .consumerLogin(this.form.value)
-                                .subscribe((res: any) => {
-                                    debugger;
-                                })
+                                .subscribe(
+                                    (res: any) => {
+                                        this.service.setLS(
+                                            "user-details",
+                                            JSON.stringify(res)
+                                        );
+                                        this.toaster.success(
+                                            "Login Successful",
+                                            "Successful!"
+                                        );
+                                        this.router.navigate([
+                                            "/organization/consumers",
+                                        ]);
+                                    },
+                                    (error: any) => {
+                                        this.toaster.error(
+                                            "Wrong credentials!",
+                                            "Error!"
+                                        );
+                                    }
+                                )
                         );
                     }
                     break;

@@ -1,0 +1,18 @@
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">{{consumer?.name | titlecase}}
+            <span class="badge" *ngIf="consumer?.type !== 'Other'" [ngClass]="{'badge-primary': consumer?.type == 'Orphanage',
+                                'badge-secondary': consumer?.type == 'Oldage homes',
+                                'badge-warning': consumer?.type == 'Hotspot'}">
+                {{consumer?.type}}
+            </span>
+            <span class="badge" *ngIf="consumer?.type == 'Other'" [ngClass]="{'badge-info': consumer?.type == 'Other'}">
+                {{consumer?.otherType}}
+            </span>
+        </h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{consumer?.address}}</h6>
+        <p class="card-text mb-0 small">Contact Person : {{consumer?.contactPerson}}</p>
+        <p class="card-text mb-0 small">Contact Number : {{consumer?.contactNo}}</p>
+        <p class="card-text mb-0 small">Number Of Persons : {{consumer?.numberOfPersons}}</p>
+    </div>
+</div>

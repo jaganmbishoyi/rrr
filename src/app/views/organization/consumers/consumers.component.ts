@@ -3,13 +3,12 @@ import { Subscription } from "rxjs";
 import { ActionService } from "src/app/shared/services/action.service";
 
 @Component({
-    selector: "app-home",
-    templateUrl: "./home.component.html",
-    styleUrls: ["./home.component.scss"],
+    selector: "app-consumers",
+    templateUrl: "./consumers.component.html",
+    styleUrls: ["./consumers.component.scss"],
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class ConsumersComponent implements OnInit, OnDestroy {
     subscriptions = new Subscription();
-
     consumers: any[] = [];
     providers: any[] = [];
 

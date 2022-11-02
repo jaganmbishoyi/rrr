@@ -12,6 +12,7 @@ import { ConsumerRegisterComponent } from "./register/consumer-register/consumer
 import { IndividualUserRegisterComponent } from "./register/individual-user-register/individual-user-register.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
+import { SharedComponentModule } from "src/app/shared/components/shared-component.module";
 
 @NgModule({
     declarations: [
@@ -27,6 +28,7 @@ import { HttpClientModule } from "@angular/common/http";
     imports: [
         CommonModule,
         PublicRoutingModule,
+        SharedComponentModule,
         HttpClientModule,
         FormsModule,
         ReactiveFormsModule,

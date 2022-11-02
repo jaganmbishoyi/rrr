@@ -1,5 +1,6 @@
+import { isPlatformBrowser } from "@angular/common";
 import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import { Inject, Injectable, PLATFORM_ID } from "@angular/core";
 import { Observable } from "rxjs";
 import { ConstantService } from "./constant.service";
 
@@ -9,11 +10,34 @@ import { ConstantService } from "./constant.service";
 export class ActionService {
     constructor(
         public http: HttpClient,
-        public constantService: ConstantService
+        public constantService: ConstantService,
+        @Inject(PLATFORM_ID) private platformId: Object
     ) {}
 
+    setLS(key: string, value: string): void {
+        if (isPlatformBrowser(this.platformId)) {
+            localStorage.setItem(key, value);
+        }
+    }
+
+    getLS(key: string): string {
+        if (isPlatformBrowser(this.platformId)) {
+            return localStorage.getItem(key);
+        }
+    }
+
+    removeLS(key: string): void {
+        if (isPlatformBrowser(this.platformId)) {
+            localStorage.removeItem(key);
+        }
+    }
+
+    clearLS(): void {
+        localStorage.clear();
+    }
+
     providerLogin(body: any): Observable<any> {
-        body.mobileNumber = String(body.mobileNumber)
+        body.mobileNumber = String(body.mobileNumber);
         return this.http.post<any>(
             this.constantService.getUrl(this.constantService.PROVIDERS_LOGIN),
             body
@@ -40,6 +64,18 @@ export class ActionService {
         return this.http.post<any>(
             this.constantService.getUrl(this.constantService.CONSUMER_REGISTER),
             body
+        );
+    }
+
+    getProviders(): Observable<any> {
+        return this.http.get<any>(
+            this.constantService.getUrl(this.constantService.GET_PROVIDERS)
+        );
+    }
+
+    getConsumers(): Observable<any> {
+        return this.http.get<any>(
+            this.constantService.getUrl(this.constantService.GET_CONSUMERS)
         );
     }
 }
