@@ -8,10 +8,13 @@ export class ConstantService {
 
     PROVIDERS_REGISTER = "providers";
     PROVIDERS_LOGIN = "providers/auth";
+    GET_PROVIDERS = "Providers/GetProviders";
+    UPDATE_PROVIDER = "Providers/UpdateProviders";
+
     CONSUMER_REGISTER = "consumers";
     CONSUMER_LOGIN = "consumers/auth";
-    GET_PROVIDERS = "Providers/GetProviders";
     GET_CONSUMERS = "Consumers/GetConsumers";
+    UPDATE_CONSUMERS = "Consumers/UpdateConsumer";
 
     getUrl(path: string, params: string[] = []): string {
         return !params.length

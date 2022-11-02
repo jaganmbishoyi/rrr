@@ -1,13 +1,54 @@
 <div class="row">
     <div class="col-12 mb-4">
-        <h6><u>Providers Details:</u></h6>
+        <h6>
+            <u>Providers Details:</u>
+            <button *ngIf="!editSection" type="button" class="btn btn-outline-primary btn-sm float-right"
+                (click)="edit()">
+                <span class="px-3">Edit</span>
+            </button>
+        </h6>
 
-        <p class="small mb-1 text-capitalize"><span style="font-weight: 500">Name:</span> {{userDetails?.name}}</p>
-        <p class="small mb-1"><span style="font-weight: 500">Address:</span> {{userDetails?.address}}</p>
-        <p class="small mb-1"><span style="font-weight: 500">Contact Number:</span> {{userDetails?.contactNumber}}</p>
-        <p class="small mb-1 text-capitalize"><span style="font-weight: 500">Contact Person:</span>
-            {{userDetails?.contactPerson }}</p>
-        <p class="small mb-1"><span style="font-weight: 500">Location:</span> {{userDetails?.location}}</p>
+        <div *ngIf="!editSection">
+            <p class="small mb-1 text-capitalize"><span style="font-weight: 500">Name:</span> {{userDetails?.name}}</p>
+            <p class="small mb-1"><span style="font-weight: 500">Address:</span> {{userDetails?.address}}</p>
+            <p class="small mb-1"><span style="font-weight: 500">Contact Number:</span> {{userDetails?.contactNumber}}
+            </p>
+            <p class="small mb-1 text-capitalize"><span style="font-weight: 500">Contact Person:</span>
+                {{userDetails?.contactPerson }}</p>
+            <p class="small mb-1"><span style="font-weight: 500">Location:</span> {{userDetails?.location}}</p>
+        </div>
+        <div *ngIf="editSection">
+            <form [formGroup]="form">
+                <div class="form-group">
+                    <label for="name">Name<span class="text-danger ml-1">*</span></label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter name" formControlName="name">
+                </div>
+                <div class="form-group">
+                    <label for="address">Address<span class="text-danger ml-1">*</span></label>
+                    <input type="text" class="form-control" id="address" placeholder="Enter address"
+                        formControlName="address">
+                </div>
+                <div class="form-group">
+                    <label for="contactNumber">Contact Number<span class="text-danger ml-1">*</span></label>
+                    <input type="text" class="form-control" id="contactNumber" placeholder="Enter contact number"
+                        formControlName="contactNumber" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="contactPerson">Contact Person<span class="text-danger ml-1">*</span></label>
+                    <input type="text" class="form-control" id="contactPerson" placeholder="Enter contact person name"
+                        formControlName="contactPerson">
+                </div>
+                <div class="form-group">
+                    <label for="location">Location<span class="text-danger ml-1">*</span></label>
+                    <input type="text" class="form-control" id="location" placeholder="Enter location"
+                        formControlName="location">
+                </div>
+
+                <button type="button" class="btn btn-primary mt-4" (click)="update()">Update</button>
+                <button type="button" class="btn btn-secondary mt-4 ml-3" (click)="cancel()">Cancel</button>
+            </form>
+
+        </div>
     </div>
     <div class="col-12">
         <h6 class="mb-4"><u>List of Consumers:</u></h6>

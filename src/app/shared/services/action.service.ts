@@ -32,10 +32,32 @@ export class ActionService {
         }
     }
 
+    registerProvider(body: any): Observable<any> {
+        return this.http.post<any>(
+            this.constantService.getUrl(
+                this.constantService.PROVIDERS_REGISTER
+            ),
+            body
+        );
+    }
+
     providerLogin(body: any): Observable<any> {
         body.mobileNumber = String(body.mobileNumber);
         return this.http.post<any>(
             this.constantService.getUrl(this.constantService.PROVIDERS_LOGIN),
+            body
+        );
+    }
+
+    getProviders(): Observable<any> {
+        return this.http.get<any>(
+            this.constantService.getUrl(this.constantService.GET_PROVIDERS)
+        );
+    }
+
+    updateProvider(body: any): Observable<any> {
+        return this.http.post<any>(
+            this.constantService.getUrl(this.constantService.UPDATE_PROVIDER),
             body
         );
     }
@@ -47,15 +69,6 @@ export class ActionService {
         );
     }
 
-    registerProvider(body: any): Observable<any> {
-        return this.http.post<any>(
-            this.constantService.getUrl(
-                this.constantService.PROVIDERS_REGISTER
-            ),
-            body
-        );
-    }
-
     registerConsumer(body: any): Observable<any> {
         return this.http.post<any>(
             this.constantService.getUrl(this.constantService.CONSUMER_REGISTER),
@@ -63,15 +76,16 @@ export class ActionService {
         );
     }
 
-    getProviders(): Observable<any> {
-        return this.http.get<any>(
-            this.constantService.getUrl(this.constantService.GET_PROVIDERS)
-        );
-    }
-
     getConsumers(): Observable<any> {
         return this.http.get<any>(
             this.constantService.getUrl(this.constantService.GET_CONSUMERS)
+        );
+    }
+
+    updateConsumer(body: any): Observable<any> {
+        return this.http.post<any>(
+            this.constantService.getUrl(this.constantService.UPDATE_CONSUMERS),
+            body
         );
     }
 }
