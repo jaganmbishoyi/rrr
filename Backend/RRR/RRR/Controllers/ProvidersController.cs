@@ -87,5 +87,32 @@ namespace RRR.Controllers
                 return Ok(providers);
             }
         }
+
+        [HttpPost]
+        [Route("UpdateProviders")]
+        public IActionResult UpdateProvider([FromBody] Provider provider)
+        {
+            using (RRRContext con = new RRRContext())
+            {
+                var providerDetails = con.Providers.FirstOrDefault(a => a.ContactNumber.Equals(provider.ContactNumber));
+
+                if(providerDetails is null)
+                {
+                    return NotFound("No record found");
+                }
+
+                providerDetails.Id = provider.Id;
+                providerDetails.Name = provider.Name;
+                providerDetails.Address = provider.Address;
+                providerDetails.ContactNumber = provider.ContactNumber;
+                providerDetails.ContactPerson = provider.ContactPerson;
+                providerDetails.Location = provider.Location;
+                providerDetails.Verified = provider.Verified;
+
+                con.SaveChanges();
+
+                return Ok("Updated successfully");
+            }
+        }
     }
 }

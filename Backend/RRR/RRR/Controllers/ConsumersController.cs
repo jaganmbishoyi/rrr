@@ -77,7 +77,7 @@ namespace RRR.Controllers
         {
             using (RRRContext con = new RRRContext())
             {
-                var providers = con.Consumers.Select(a => new
+                var consumers = con.Consumers.Select(a => new
                 {
                     Id = a.Id,
                     Name = a.Name,
@@ -92,7 +92,39 @@ namespace RRR.Controllers
                     OtherType = a.OtherType,
                     UpdatedDate = a.UpdatedDate
                 }).ToList();
-                return Ok(providers);
+                return Ok(consumers);
+            }
+        }
+
+        [HttpPost]
+        [Route("UpdateConsumer")]
+        public IActionResult UpdateConsumers([FromBody] Consumer consumer)
+        {
+            using (RRRContext con = new RRRContext())
+            {
+                var consumerDetails = con.Consumers.FirstOrDefault(a => a.ContactNo.Equals(consumer.ContactNo));
+
+                if (consumerDetails is null)
+                {
+                    return NotFound("No record found");
+                }
+
+                consumerDetails.Id = consumer.Id;
+                consumerDetails.Name = consumer.Name;
+                consumerDetails.Address = consumer.Address;
+                consumerDetails.ContactNo = consumer.ContactNo;
+                consumerDetails.ContactPerson = consumer.ContactPerson;
+                consumerDetails.Location = consumer.Location;
+                consumerDetails.Verified = consumer.Verified;
+                consumerDetails.CreatedDate = consumer.CreatedDate;
+                consumerDetails.NumberOfPersons = consumer.NumberOfPersons;
+                consumerDetails.Type = consumer.Type;
+                consumerDetails.OtherType = consumer.OtherType;
+                consumerDetails.UpdatedDate = DateTime.Now;
+
+                con.SaveChanges();
+
+                return Ok("updated successfully");
             }
         }
     }
