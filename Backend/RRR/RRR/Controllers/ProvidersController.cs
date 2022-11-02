@@ -58,5 +58,16 @@ namespace RRR.Controllers
                 }
             }
         }
+
+        [HttpGet]
+        [Route("GetProviders")]
+        public IActionResult GetProviders()
+        {
+            using (RRRContext con = new RRRContext())
+            {
+                var providers = con.Providers.ToList();
+                return Ok(providers);
+            }
+        }
     }
 }
