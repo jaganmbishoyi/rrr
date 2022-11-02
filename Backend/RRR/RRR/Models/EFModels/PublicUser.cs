@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+using System;
 
 #nullable disable
 
@@ -15,5 +14,6 @@ namespace RRR.Models.EFModels
         public string Address { get; set; }
         public DateTime? CreatedDate { get; set; }
         public DateTime? UpdatedDate { get; set; }
+        public string Password { get; set; }
     }
 }
