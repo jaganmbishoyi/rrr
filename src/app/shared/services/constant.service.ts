@@ -4,7 +4,8 @@ import { Injectable } from "@angular/core";
     providedIn: "root",
 })
 export class ConstantService {
-    API_URL: string = "http://localhost:8090/api/";
+    // API_URL: string = "http://localhost:8090/api/";
+    API_URL: string = "https://localhost:44392/api/";
 
     PROVIDERS_REGISTER = "providers";
     PROVIDERS_LOGIN = "providers/auth";
