@@ -35,5 +35,16 @@ namespace RRR.Models.EFModels
         public DateTime CreatedDate { get; set; }
 
         public DateTime? UpdatedDate { get; set; }
+
+        public int? ProviderId { get; set; }
+
+        public int? publicUserId { get; set; }
+
+        public string individualConsumerId { get; set; }
+    }
+
+    public class ConsumerNameWithAds : Ads
+    {
+        public string Consumers { get; set; }
     }
 }
