@@ -12,6 +12,14 @@ namespace RRR.Controllers
     [ApiController]
     public class ConsumersController : ControllerBase
     {
+        private readonly PostHelper postHelper;
+
+        public ConsumersController()
+        {
+            // Need to migrate as dependency injection
+            postHelper = new PostHelper();
+        }
+
         [HttpPost]
         public IActionResult Post([FromBody] Consumer provider)
         {
@@ -110,7 +118,6 @@ namespace RRR.Controllers
                 consumerDetails.Id = consumer.Id;
                 consumerDetails.Name = consumer.Name;
                 consumerDetails.Address = consumer.Address;
-                consumerDetails.ContactNo = consumer.ContactNo;
                 consumerDetails.ContactPerson = consumer.ContactPerson;
                 consumerDetails.Location = consumer.Location;
                 consumerDetails.Verified = consumer.Verified;
@@ -124,6 +131,30 @@ namespace RRR.Controllers
 
                 return Ok("updated successfully");
             }
+        }
+
+        [HttpPost]
+        [Route("ConsumerInterested")]
+        public IActionResult ConsumerInterested(int id, int consumerId)
+        {
+            var result = postHelper.InterestedToCollectItems(id, consumerId, false);
+            return Ok(result);
+        }
+
+        [HttpPost]
+        [Route("ConsumerNotInterested")]
+        public IActionResult ConsumerNotInterested(int id, int consumerId)
+        {
+            var result = postHelper.NotInterestedToCollectItems(id, consumerId, false);
+            return Ok(result);
+        }
+
+        [HttpPost]
+        [Route("UpdateItemStatusCollected")]
+        public IActionResult UpdateItemStatusCollected(int id)
+        {
+            var result = postHelper.UpdateItemStatusCollected(id);
+            return Ok(result);
         }
     }
 }

@@ -109,5 +109,46 @@ namespace RRR.Controllers
             var result = this.postHelper.DeletePost(id);
             return Ok(result);
         }
+
+        [HttpPost]
+        [Route("UpdateIndividual")]
+        public IActionResult UpdateIndividual(PublicUser publicUser)
+        {
+            using(RRRContext con = new RRRContext())
+            {
+                var user = con.PublicUsers.FirstOrDefault(a => a.Id == publicUser.Id);
+
+                if(user is null)
+                {
+                    return NotFound("user not found");
+                }
+
+                user.FirstName = publicUser.FirstName;
+                user.LastName = publicUser.LastName;
+                user.Email = publicUser.Email;
+                user.Address = publicUser.Address;
+                user.UpdatedDate = DateTime.Now;
+
+                con.SaveChanges();
+
+                return Ok();
+            }
+        }
+
+        [HttpPost]
+        [Route("IndividualConsumerInterested")]
+        public IActionResult IndividualConsumerInterested(int id, int individualId)
+        {
+            var result = postHelper.InterestedToCollectItems(id, individualId, true);
+            return Ok(result);
+        }
+
+        [HttpPost]
+        [Route("IndividualConsumerNotInterested")]
+        public IActionResult IndividualConsumerNotInterested(int id, int individualId)
+        {
+            var result = postHelper.NotInterestedToCollectItems(id, individualId, true);
+            return Ok(result);
+        }
     }
 }

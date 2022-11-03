@@ -113,7 +113,6 @@ namespace RRR.Controllers
                 providerDetails.Id = provider.Id;
                 providerDetails.Name = provider.Name;
                 providerDetails.Address = provider.Address;
-                providerDetails.ContactNumber = provider.ContactNumber;
                 providerDetails.ContactPerson = provider.ContactPerson;
                 providerDetails.Location = provider.Location;
                 providerDetails.Verified = provider.Verified;
@@ -148,7 +147,7 @@ namespace RRR.Controllers
             return Ok(result);
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("GetAllPost")]
         public IActionResult GetAllPost()
         {
