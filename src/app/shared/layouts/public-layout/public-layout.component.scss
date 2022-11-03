@@ -11,7 +11,8 @@
 
 .body-content {
     margin-top: $header-height;
-    min-height: calc(90vh - #{$header-height});
+    min-height: calc(92vh - #{$header-height});
+    padding: 40px 60px;
 }
 
 @media only screen and (max-width: 1200px) {

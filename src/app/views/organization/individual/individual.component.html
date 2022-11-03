@@ -1,0 +1,88 @@
+<div class="row">
+    <div class="col-12 mb-4">
+        <h6>
+            <u>Individual User Details:</u>
+
+            <button type="button" class="btn btn-outline-success btn-sm float-right ml-3" (click)="allPosts()">
+                <span class="px-3">All Posts</span>
+            </button>
+            <button type="button" class="btn btn-outline-secondary btn-sm float-right ml-3" (click)="createPost()">
+                <span class="px-3">Create Post</span>
+            </button>
+            <button *ngIf="!editSection" type="button" class="btn btn-outline-primary btn-sm float-right"
+                (click)="edit()">
+                <span class="px-3">Edit</span>
+            </button>
+        </h6>
+
+        <div *ngIf="!editSection">
+            <p class="small mb-1 text-capitalize"><span style="font-weight: 500">Name:</span> {{userDetails?.firstName}}
+                {{userDetails?.lastName}}</p>
+            <p class="small mb-1"><span style="font-weight: 500">Address:</span> {{userDetails?.address}}</p>
+            <p class="small mb-1"><span style="font-weight: 500">Contact Number:</span> {{userDetails?.phoneNumber}}
+            </p>
+            <p class="small mb-1 text-capitalize">
+                <span style="font-weight: 500">Email:</span>
+                {{userDetails?.email }}
+            </p>
+        </div>
+        <div *ngIf="editSection">
+            <form [formGroup]="form">
+                <div class="form-group">
+                    <label for="firstname">First Name<span class="text-danger ml-1">*</span></label>
+                    <input type="text" class="form-control" id="firstname" placeholder="Enter first name"
+                        formControlName="firstName">
+                </div>
+                <div class="form-group">
+                    <label for="lastname">Last Name<span class="text-danger ml-1">*</span></label>
+                    <input type="text" class="form-control" id="lastname" placeholder="Enter last name"
+                        formControlName="lastName">
+                </div>
+                <div class="form-group">
+                    <label for="address">email<span class="text-danger ml-1">*</span></label>
+                    <input type="email" class="form-control" id="address" placeholder="Enter address"
+                        formControlName="email">
+                </div>
+                <div class="form-group">
+                    <label for="address">Address<span class="text-danger ml-1">*</span></label>
+                    <input type="text" class="form-control" id="address" placeholder="Enter address"
+                        formControlName="address">
+                </div>
+                <div class="form-group">
+                    <label for="phoneNumber">Contact Number<span class="text-danger ml-1">*</span></label>
+                    <input type="text" class="form-control" id="phoneNumber" placeholder="Enter contact number"
+                        formControlName="phoneNumber">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password<span class="text-danger ml-1">*</span></label>
+                    <input type="password" class="form-control" id="password" placeholder="Password"
+                        formControlName="password">
+                </div>
+
+                <button type="button" class="btn btn-primary mt-4" (click)="update()">Update</button>
+                <button type="button" class="btn btn-secondary mt-4 ml-3" (click)="cancel()">Cancel</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <h6 class="mb-4"><u>List of Providers:</u></h6>
+        <div class="row">
+            <div class="col-12 col-md-4 mb-3" *ngFor="let provider of providers">
+                <app-provider-card [provider]="provider"></app-provider-card>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 mt-5">
+        <h6 class="mb-4"><u>List of Consumers:</u></h6>
+        <div class="row">
+            <div class="col-12 col-md-4 mb-3" *ngFor="let consumer of consumers">
+                <app-consumer-card [consumer]="consumer"></app-consumer-card>
+            </div>
+        </div>
+    </div>
+</div>

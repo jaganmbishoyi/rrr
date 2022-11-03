@@ -1,0 +1,51 @@
+<form [formGroup]="form">
+    <div class="form-group">
+        <label for="name">Name<span class="text-danger ml-1">*</span></label>
+        <input type="text" class="form-control" id="name" placeholder="Enter name" formControlName="name">
+    </div>
+    <div class="form-group">
+        <label for="address">Address<span class="text-danger ml-1">*</span></label>
+        <input type="text" class="form-control" id="address" placeholder="Enter address" formControlName="address">
+    </div>
+    <div class="form-group">
+        <label for="contactNo">Contact Number<span class="text-danger ml-1">*</span></label>
+        <input type="text" class="form-control" id="contactNo" placeholder="Enter contact number"
+            formControlName="contactNo">
+    </div>
+    <div class="form-group">
+        <label for="contactPerson">Contact Person<span class="text-danger ml-1">*</span></label>
+        <input type="text" class="form-control" id="contactPerson" placeholder="Enter contact person name"
+            formControlName="contactPerson">
+    </div>
+    <div class="form-group">
+        <label for="location">Location<span class="text-danger ml-1">*</span></label>
+        <input type="text" class="form-control" id="location" placeholder="Enter location" formControlName="location">
+    </div>
+    <div class="input-group form-group">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="type">Type</label>
+        </div>
+        <select class="custom-select" id="type" formControlName="type">
+            <option value="Orphanage">Orphanage</option>
+            <option value="Oldage homes">Oldage homes</option>
+            <option value="Hotspot">Hotspot</option>
+            <option value="Other">Other</option>
+        </select>
+    </div>
+    <div class="form-group" *ngIf="form.get('type').value === 'Other'">
+        <label for="otherType">Other type<span class="text-danger ml-1">*</span></label>
+        <input type="text" class="form-control" id="otherType" placeholder="Enter other type"
+            formControlName="location">
+    </div>
+    <div class="form-group">
+        <label for="numberOfPersons">Number Of Persons<span class="text-danger ml-1">*</span></label>
+        <input type="number" class="form-control" id="numberOfPersons" placeholder="Enter number of persons"
+            formControlName="numberOfPersons">
+    </div>
+    <div class="form-group">
+        <label for="password">Password<span class="text-danger ml-1">*</span></label>
+        <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password">
+    </div>
+
+    <button type="button" class="btn btn-primary mt-4" (click)="register()">Register</button>
+</form>

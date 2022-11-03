@@ -1,0 +1,24 @@
+@import "../../../../../assets/styles/variable.scss";
+
+.toolbar {
+    position: absolute;
+    top: 0;
+    left: 15px;
+    right: 15px;
+    height: $header-height;
+    display: flex;
+    align-items: center;
+    background-color: #00264c;
+    color: white;
+    font-weight: 600;
+    justify-content: space-between;
+}
+
+.toolbar img {
+    margin: 0 16px;
+    cursor: pointer;
+}
+
+#navbarDropdown {
+    color: #ffffff;
+}

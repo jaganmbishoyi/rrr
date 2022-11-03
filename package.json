@@ -19,13 +19,15 @@
         "@angular/platform-browser": "~9.1.13",
         "@angular/platform-browser-dynamic": "~9.1.13",
         "@angular/router": "~9.1.13",
-        "rxjs": "~6.5.4",
-        "tslib": "^1.10.0",
-        "zone.js": "~0.10.2",
         "bootstrap": "^4.4.1",
-        "ngx-toastr": "^13.0.0",
         "font-awesome": "^4.7.0",
-        "ng-http-loader": "^7.0.0"
+        "jquery": "^3.6.1",
+        "ng-http-loader": "^7.0.0",
+        "ngx-toastr": "^13.0.0",
+        "rxjs": "~6.5.4",
+        "save": "^2.9.0",
+        "tslib": "^1.10.0",
+        "zone.js": "~0.10.2"
     },
     "devDependencies": {
         "@angular-devkit/build-angular": "~0.901.13",

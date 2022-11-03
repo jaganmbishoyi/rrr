@@ -1,15 +1,42 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Subscription } from "rxjs";
+import { ActionService } from "src/app/shared/services/action.service";
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+    selector: "app-home",
+    templateUrl: "./home.component.html",
+    styleUrls: ["./home.component.scss"],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
+    subscriptions = new Subscription();
 
-  constructor() { }
+    consumers: any[] = [];
+    providers: any[] = [];
 
-  ngOnInit(): void {
-  }
+    constructor(public service: ActionService) {}
 
+    ngOnInit(): void {
+        this.getConsumers();
+        this.getProviders();
+    }
+
+    getConsumers(): void {
+        this.subscriptions.add(
+            this.service.getConsumers().subscribe((res: any) => {
+                this.consumers = res;
+            })
+        );
+    }
+
+    getProviders(): void {
+        this.subscriptions.add(
+            this.service.getProviders().subscribe((res: any) => {
+                this.providers = res;
+            })
+        );
+    }
+
+    ngOnDestroy(): void {
+        this.subscriptions.unsubscribe();
+    }
 }

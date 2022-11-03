@@ -1,1 +1,60 @@
-<p>home works!</p>
+<div class="row">
+    <div class="col-12 col-md-6">
+        <p>
+            Food loss and waste is food that is not eaten. Overall, about one-third of the world's food is thrown away.
+            The analysis
+            estimated that global food waste was 931 million tonnes of food waste across three sectors: 61 percent from
+            households,
+            26 percent from food service and 13 per cent from retail.
+        </p>
+        <p>
+            Food loss and waste is food that is not eaten. Overall, about one-third of the world's food is thrown away.
+            The analysis
+            estimated that global food waste was 931 million tonnes of food waste across three sectors: 61 percent from
+            households,
+            26 percent from food service and 13 per cent from retail.
+        </p>
+        <p>
+            Food loss and waste is food that is not eaten. Overall, about one-third of the world's food is thrown away.
+            The analysis
+            estimated that global food waste was 931 million tonnes of food waste across three sectors: 61 percent from
+            households,
+            26 percent from food service and 13 per cent from retail.
+        </p>
+        <p>
+            Food loss and waste is food that is not eaten. Overall, about one-third of the world's food is thrown away.
+            The analysis
+            estimated that global food waste was 931 million tonnes of food waste across three sectors: 61 percent from
+            households,
+            26 percent from food service and 13 per cent from retail.
+        </p>
+    </div>
+    <div class="col-12 col-md-6 text-center">
+        <img class="img-responsive" style="width: 400px;max-width: 100%; border-radius: 50%;"
+            src="assets/images/img1.jpg" alt="" srcset="">
+    </div>
+
+    <div class="offset-3 col-6 mt-5">
+        <img src="assets/images/reduce-reuse-recycle.jpg" style="width:100%;" alt="" srcset="">
+    </div>
+
+</div>
+
+<div class="row mt-5">
+    <div class="col-12 mb-5">
+        <h6 class="mb-4"><u>List of Providers:</u></h6>
+        <div class="row">
+            <div class="col-12 col-md-4 mb-3" *ngFor="let provider of providers">
+                <app-provider-card [provider]="provider"></app-provider-card>
+            </div>
+        </div>
+    </div>
+    <div class="col-12">
+        <h6 class="mb-4"><u>List of Consumers:</u></h6>
+        <div class="row">
+            <div class="col-12 col-md-4 mb-3" *ngFor="let consumer of consumers">
+                <app-consumer-card [consumer]="consumer"></app-consumer-card>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row">
+        <div class="offset-md-3 col-md-6">
+            <h4 class="text-center mb-5">Registration</h4>
+            <form>
+                <div class="btn-group mb-3">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Register as
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" (click)="selectRegisterType(register?.name)"
+                            *ngFor="let register of registerType">
+                            {{register?.name}}
+                        </a>
+                    </div>
+                    <span class="selected-register-type">
+                        {{selectedRegisterType}}
+                    </span>
+                </div>
+                <div *ngIf="selectedRegisterType === 'Provider'">
+                    <app-provider-register></app-provider-register>
+                </div>
+                <div *ngIf="selectedRegisterType === 'Consumer'">
+                    <app-consumer-register></app-consumer-register>
+                </div>
+                <div *ngIf="selectedRegisterType === 'Individual User'">
+                    <app-individual-user-register></app-individual-user-register>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
