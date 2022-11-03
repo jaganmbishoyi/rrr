@@ -251,6 +251,7 @@ namespace RRR.Helper
                 {
                     var post = new ConsumerNameWithAds()
                     {
+                        Id = ads.Id,
                         Name = ads.Name,
                         Type = ads.Type,
                         ExpiryDate = ads.ExpiryDate,
@@ -262,16 +263,20 @@ namespace RRR.Helper
                         ContactName = ads.ContactName,
                         Status = ads.Status,
                         ConsumerID = ads.ConsumerID,
+                        ProviderId = ads.ProviderId,
+                        publicUserId = ads.publicUserId,
                         Notes = ads.Notes,
                         UpdatedDate = DateTime.Now,
                         Consumers = GetInterestedConsumers(ads.ConsumerID, ads.individualConsumerId)
                     };
+
+                    consumerNamewithAds.Add(post);
                 }
 
                 return consumerNamewithAds;
             }
-
         }
+
         private string GetInterestedConsumers(string consumerIds, string individualIds)
         {
             var providers = GetInterestedConsumersName(consumerIds);

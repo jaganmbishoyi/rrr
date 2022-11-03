@@ -150,5 +150,13 @@ namespace RRR.Controllers
             var result = postHelper.NotInterestedToCollectItems(id, individualId, true);
             return Ok(result);
         }
+
+        [HttpGet]
+        [Route("GetPostedByIndividual")]
+        public IActionResult GetPostedByIndividual(int id)
+        {
+            var result = postHelper.GetPostsByProviderPosted(id, true);
+            return Ok(result);
+        }
     }
 }

@@ -162,5 +162,13 @@ namespace RRR.Controllers
             var result = this.postHelper.DeletePost(id);
             return Ok(result);
         }
+
+        [HttpGet]
+        [Route("GetPostedByProvider")]
+        public IActionResult GetPostedByProvider(int id)
+        {
+            var result = postHelper.GetPostsByProviderPosted(id, false);
+            return Ok(result);
+        }
     }
 }
