@@ -1,3 +1,4 @@
+using RRR.Models;
 using RRR.Models.EFModels;
 using System;
 using System.Collections.Generic;
@@ -75,17 +76,17 @@ namespace RRR.Helper
             }
         }
 
-        public List<ConsumerNameWithAds> GetAllPost()
+        public List<AdsModel> GetAllPost()
         {
             using (RRRContext con = new RRRContext())
             {
                 var posts = con.Ads.ToList();
 
-                var consumerNamewithAds = new List<ConsumerNameWithAds>();
+                var consumerNamewithAds = new List<AdsModel>();
 
                 foreach (var ads in posts)
                 {
-                    var post = new ConsumerNameWithAds()
+                    var post = new AdsModel()
                     {
                         Id = ads.Id,
                         Name = ads.Name,
@@ -103,6 +104,7 @@ namespace RRR.Helper
                         UpdatedDate = ads.UpdatedDate,
                         publicUserId = ads.publicUserId,
                         ProviderId = ads.ProviderId,
+                        ProviderName = ads.ProviderId != null ? con.Providers.Where(s => s.Id == ads.ProviderId).FirstOrDefault().Name : null,
                         Consumers = GetInterestedConsumers(ads.ConsumerID, ads.individualConsumerId)
                     };
 
@@ -230,7 +232,7 @@ namespace RRR.Helper
             }
         }
 
-        public List<ConsumerNameWithAds> GetPostsByProviderPosted(int providerId, bool isIndividual)
+        public List<AdsModel> GetPostsByProviderPosted(int providerId, bool isIndividual)
         {
             using (RRRContext con = new RRRContext())
             {
@@ -245,11 +247,11 @@ namespace RRR.Helper
                     posts = con.Ads.Where(a => a.ProviderId == providerId).ToList();
                 }
 
-                var consumerNamewithAds = new List<ConsumerNameWithAds>();
+                var consumerNamewithAds = new List<AdsModel>();
 
                 foreach (var ads in posts)
                 {
-                    var post = new ConsumerNameWithAds()
+                    var post = new AdsModel()
                     {
                         Id = ads.Id,
                         Name = ads.Name,
@@ -267,6 +269,7 @@ namespace RRR.Helper
                         publicUserId = ads.publicUserId,
                         Notes = ads.Notes,
                         UpdatedDate = DateTime.Now,
+                        ProviderName = ads.ProviderId != null ? con.Providers.Where(s => s.Id == ads.ProviderId).FirstOrDefault().Name : null,
                         Consumers = GetInterestedConsumers(ads.ConsumerID, ads.individualConsumerId)
                     };
 

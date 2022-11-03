@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>E:\Code Combat\rrr\Backend\RRR\RRR\bin\Release\net5.0\publish\</_PublishTargetUrl>
+    <History>True|2022-11-02T07:57:30.5246270Z;False|2022-11-02T03:57:16.6794088-04:00;True|2022-11-02T03:35:44.5869262-04:00;</History>
+  </PropertyGroup>
+</Project>
