@@ -2,8 +2,8 @@
     <div class="card-body">
         <h5 class="card-title text-capitalize">{{post?.name}}
             <span class="badge"
-                [ngClass]="{'badge-primary': post?.type == 'individual','badge-warning': post?.type == 'providers'}">
-                {{post?.type}}
+                [ngClass]="{'badge-primary': post?.type == 'individual','badge-warning': post?.type == 'provider'}">
+                {{post?.type | titlecase}}
             </span>
         </h5>
         <h6 class="card-subtitle mb-2 text-muted">{{post?.address}}, {{post?.addressType}}</h6>

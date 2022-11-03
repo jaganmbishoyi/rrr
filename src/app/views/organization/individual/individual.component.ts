@@ -66,11 +66,6 @@ export class IndividualComponent implements OnInit, OnDestroy {
                 Validators.compose([Validators.required]),
             ],
             address: [data.address, Validators.compose([Validators.required])],
-            createdDate: [
-                data.createdDate,
-                Validators.compose([Validators.required]),
-            ],
-            updatedDate: [data.updatedDate],
         });
     }
 

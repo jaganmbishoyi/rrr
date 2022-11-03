@@ -18,7 +18,7 @@ export class ConstantService {
 
     INDIVIDUAL_REGISTER = "Individual/IndividualRegistration";
     INDIVIDUAL_LOGIN = "Individual/Auth";
-    INDIVIDUAL_UPDATE = "Individual/dummy-endpoint";
+    INDIVIDUAL_UPDATE = "Individual/UpdateIndividual";
 
     INDIVIDUAL_ADD_POST = "Individual/AddPost";
     INDIVIDUAL_UPDATE_POST = "Individual/UpdatePost";
