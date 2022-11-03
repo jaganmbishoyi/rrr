@@ -170,5 +170,13 @@ namespace RRR.Controllers
             var result = postHelper.GetPostsByProviderPosted(id, false);
             return Ok(result);
         }
+
+        [HttpPost]
+        [Route("UpdateItemStatusCollected")]
+        public IActionResult UpdateItemStatusCollected(int id)
+        {
+            var result = postHelper.UpdateItemStatusCollected(id);
+            return Ok(result);
+        }
     }
 }
