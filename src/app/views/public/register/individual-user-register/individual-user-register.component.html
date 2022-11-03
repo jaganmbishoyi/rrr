@@ -1,1 +1,30 @@
-<p>individual-user-register works!</p>
+<form [formGroup]="form">
+    <div class="form-group">
+        <label for="firstname">First Name<span class="text-danger ml-1">*</span></label>
+        <input type="text" class="form-control" id="firstname" placeholder="Enter first name"
+            formControlName="firstName">
+    </div>
+    <div class="form-group">
+        <label for="lastname">Last Name<span class="text-danger ml-1">*</span></label>
+        <input type="text" class="form-control" id="lastname" placeholder="Enter last name" formControlName="lastName">
+    </div>
+    <div class="form-group">
+        <label for="address">email<span class="text-danger ml-1">*</span></label>
+        <input type="email" class="form-control" id="address" placeholder="Enter address" formControlName="email">
+    </div>
+    <div class="form-group">
+        <label for="address">Address<span class="text-danger ml-1">*</span></label>
+        <input type="text" class="form-control" id="address" placeholder="Enter address" formControlName="address">
+    </div>
+    <div class="form-group">
+        <label for="phoneNumber">Contact Number<span class="text-danger ml-1">*</span></label>
+        <input type="text" class="form-control" id="phoneNumber" placeholder="Enter contact number"
+            formControlName="phoneNumber">
+    </div>
+    <div class="form-group">
+        <label for="password">Password<span class="text-danger ml-1">*</span></label>
+        <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password">
+    </div>
+
+    <button type="button" class="btn btn-primary mt-4" (click)="register()">Register</button>
+</form>

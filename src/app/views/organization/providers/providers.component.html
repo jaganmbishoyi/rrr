@@ -2,6 +2,12 @@
     <div class="col-12 mb-4">
         <h6>
             <u>Providers Details:</u>
+            <button type="button" class="btn btn-outline-success btn-sm float-right ml-3" (click)="allPosts()">
+                <span class="px-3">All Posts</span>
+            </button>
+            <button type="button" class="btn btn-outline-secondary btn-sm float-right ml-3" (click)="createPost()">
+                <span class="px-3">Create Post</span>
+            </button>
             <button *ngIf="!editSection" type="button" class="btn btn-outline-primary btn-sm float-right"
                 (click)="edit()">
                 <span class="px-3">Edit</span>

@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
         },
     ];
 
-    selectedRegisterType: string = "Provider";
+    selectedRegisterType: string = "Individual User";
 
     constructor() {}
 

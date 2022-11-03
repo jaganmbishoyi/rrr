@@ -16,6 +16,20 @@ export class ConstantService {
     GET_CONSUMERS = "Consumers/GetConsumers";
     UPDATE_CONSUMERS = "Consumers/UpdateConsumer";
 
+    INDIVIDUAL_REGISTER = "Individual/IndividualRegistration";
+    INDIVIDUAL_LOGIN = "Individual/Auth";
+    INDIVIDUAL_UPDATE = "Individual/dummy-endpoint";
+
+    INDIVIDUAL_ADD_POST = "Individual/AddPost";
+    INDIVIDUAL_UPDATE_POST = "Individual/UpdatePost";
+    INDIVIDUAL_GET_ALL_POST = "Individual/GetAllPost";
+    INDIVIDUAL_GET_POST_BY_ID = "Individual/GetPost";
+
+    PROVIDER_ADD_POST = "Providers/AddPost";
+    PROVIDER_UPDATE_POST = "Providers/UpdatePost";
+    PROVIDER_GET_ALL_POST = "Providers/GetAllPost";
+    PROVIDER_GET_POST_BY_ID = "Providers/GetPost";
+
     getUrl(path: string, params: string[] = []): string {
         return !params.length
             ? [this.API_URL, path].join("")

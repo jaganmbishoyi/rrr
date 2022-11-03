@@ -2,7 +2,7 @@
     <div class="col-12">
         <div class="toolbar" role="banner">
             <div>
-                <img width="65" alt="Angular Logo" src="assets/images/logo.png" />
+                <img width="65" alt="Angular Logo" src="assets/images/logo.png" (click)="navigateHome()" />
                 <span>Welcome to RRR ( Reduce, Reuse, Recycle )</span>
             </div>
             <div style="margin-right: 25px;">
@@ -12,7 +12,7 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    {{userDetails?.name}}
+                                    {{userName}}
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" (click)="logout()">Logout</a>

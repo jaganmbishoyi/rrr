@@ -6,11 +6,11 @@ import { Subscription } from "rxjs";
 import { ActionService } from "src/app/shared/services/action.service";
 
 @Component({
-    selector: "app-providers",
-    templateUrl: "./providers.component.html",
-    styleUrls: ["./providers.component.scss"],
+    selector: "app-individual",
+    templateUrl: "./individual.component.html",
+    styleUrls: ["./individual.component.scss"],
 })
-export class ProvidersComponent implements OnInit, OnDestroy {
+export class IndividualComponent implements OnInit, OnDestroy {
     subscriptions = new Subscription();
     form: FormGroup;
 
@@ -28,44 +28,9 @@ export class ProvidersComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.userDetails = JSON.parse(this.service.getLS("user-details"));
+
         this.getConsumers();
-        // this.getProviders();
-    }
-
-    initForm(data: any): void {
-        this.form = this.formBuilder.group({
-            id: [data.id, Validators.compose([])],
-            name: [data.name, Validators.compose([Validators.required])],
-            address: [data.address, Validators.compose([Validators.required])],
-            contactNumber: [
-                data.contactNumber,
-                Validators.compose([Validators.required]),
-            ],
-            contactPerson: [
-                data.contactPerson,
-                Validators.compose([Validators.required]),
-            ],
-            location: [
-                data.location,
-                Validators.compose([Validators.required]),
-            ],
-            verified: [
-                data.verified,
-                Validators.compose([Validators.required]),
-            ],
-            createdDate: [
-                data.createdDate,
-                Validators.compose([Validators.required]),
-            ],
-        });
-    }
-
-    createPost(): void {
-        this.router.navigate(["/organization/individual/posts/new"]);
-    }
-
-    allPosts(): void {
-        this.router.navigate(["/organization/individual/posts"]);
+        this.getProviders();
     }
 
     getConsumers(): void {
@@ -84,6 +49,31 @@ export class ProvidersComponent implements OnInit, OnDestroy {
         );
     }
 
+    initForm(data: any): void {
+        this.form = this.formBuilder.group({
+            id: [data.id, Validators.compose([])],
+            firstName: [
+                data.firstName,
+                Validators.compose([Validators.required]),
+            ],
+            lastName: [
+                data.lastName,
+                Validators.compose([Validators.required]),
+            ],
+            email: [data.email, Validators.compose([Validators.required])],
+            phoneNumber: [
+                data.phoneNumber,
+                Validators.compose([Validators.required]),
+            ],
+            address: [data.address, Validators.compose([Validators.required])],
+            createdDate: [
+                data.createdDate,
+                Validators.compose([Validators.required]),
+            ],
+            updatedDate: [data.updatedDate],
+        });
+    }
+
     edit(): void {
         this.editSection = true;
         this.initForm(this.userDetails);
@@ -93,13 +83,21 @@ export class ProvidersComponent implements OnInit, OnDestroy {
         this.editSection = false;
     }
 
+    createPost(): void {
+        this.router.navigate(["/organization/individual/posts/new"]);
+    }
+
+    allPosts(): void {
+        this.router.navigate(["/organization/individual/posts"]);
+    }
+
     update(): void {
         if (this.form.valid) {
             this.subscriptions.add(
-                this.service.updateProvider(this.form.value).subscribe(
+                this.service.updateIndividualUser(this.form.value).subscribe(
                     (res: any) => {
                         this.toaster.success(
-                            "Successfully updated provider details.",
+                            "Successfully updated individual user details.",
                             "Successful!"
                         );
                         this.userDetails = this.form.value;

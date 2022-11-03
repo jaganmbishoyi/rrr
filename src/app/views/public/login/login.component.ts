@@ -116,6 +116,36 @@ export class LoginComponent implements OnInit, OnDestroy {
                     }
                     break;
 
+                case "Individual User":
+                    {
+                        this.subscriptions.add(
+                            this.service
+                                .individualLogin(this.form.value)
+                                .subscribe(
+                                    (res: any) => {
+                                        this.service.setLS(
+                                            "user-details",
+                                            JSON.stringify(res)
+                                        );
+                                        this.toaster.success(
+                                            "Login Successful",
+                                            "Successful!"
+                                        );
+                                        this.router.navigate([
+                                            "/organization/individual",
+                                        ]);
+                                    },
+                                    (error: any) => {
+                                        this.toaster.error(
+                                            "Wrong credentials!",
+                                            "Error!"
+                                        );
+                                    }
+                                )
+                        );
+                    }
+                    break;
+
                 default:
                     break;
             }

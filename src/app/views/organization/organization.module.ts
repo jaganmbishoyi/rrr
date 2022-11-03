@@ -7,9 +7,10 @@ import { ConsumersComponent } from "./consumers/consumers.component";
 import { SharedComponentModule } from "src/app/shared/components/shared-component.module";
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { IndividualComponent } from "./individual/individual.component";
 
 @NgModule({
-    declarations: [ProvidersComponent, ConsumersComponent],
+    declarations: [ProvidersComponent, ConsumersComponent, IndividualComponent],
     imports: [
         CommonModule,
         OrganizationRoutingModule,

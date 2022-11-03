@@ -95,4 +95,93 @@ export class ActionService {
             body
         );
     }
+
+    registerIndividualUser(body: any): Observable<any> {
+        return this.http.post<any>(
+            this.constantService.getUrl(
+                this.constantService.INDIVIDUAL_REGISTER
+            ),
+            body
+        );
+    }
+
+    individualLogin(body: any): Observable<any> {
+        return this.http.post<any>(
+            this.constantService.getUrl(this.constantService.INDIVIDUAL_LOGIN),
+            body
+        );
+    }
+
+    updateIndividualUser(body: any): Observable<any> {
+        return this.http.post<any>(
+            this.constantService.getUrl(this.constantService.INDIVIDUAL_UPDATE),
+            body
+        );
+    }
+
+    createIndividualPost(body: any): Observable<any> {
+        return this.http.post<any>(
+            this.constantService.getUrl(
+                this.constantService.INDIVIDUAL_ADD_POST
+            ),
+            body
+        );
+    }
+
+    updateIndividualPost(body: any): Observable<any> {
+        return this.http.post<any>(
+            this.constantService.getUrl(
+                this.constantService.INDIVIDUAL_UPDATE_POST
+            ),
+            body
+        );
+    }
+
+    getIndividualPostByID(ID: any): Observable<any> {
+        return this.http.get<any>(
+            this.constantService.getUrl(
+                `${this.constantService.INDIVIDUAL_GET_POST_BY_ID}/${ID}`
+            )
+        );
+    }
+
+    getIndividualAllPost(): Observable<any> {
+        return this.http.get<any>(
+            this.constantService.getUrl(
+                this.constantService.INDIVIDUAL_GET_ALL_POST
+            )
+        );
+    }
+
+    createProvidersPost(body: any): Observable<any> {
+        return this.http.post<any>(
+            this.constantService.getUrl(this.constantService.PROVIDER_ADD_POST),
+            body
+        );
+    }
+
+    updateProvidersPost(body: any): Observable<any> {
+        return this.http.post<any>(
+            this.constantService.getUrl(
+                this.constantService.PROVIDER_UPDATE_POST
+            ),
+            body
+        );
+    }
+
+    getProvidersPostByID(ID: any): Observable<any> {
+        return this.http.get<any>(
+            this.constantService.getUrl(
+                `${this.constantService.PROVIDER_GET_POST_BY_ID}/${ID}`
+            )
+        );
+    }
+
+    getProvidersAllPost(): Observable<any> {
+        return this.http.get<any>(
+            this.constantService.getUrl(
+                this.constantService.PROVIDER_GET_ALL_POST
+            )
+        );
+    }
 }
