@@ -145,10 +145,10 @@ export class ActionService {
         );
     }
 
-    getIndividualAllPost(): Observable<any> {
+    getIndividualPostByUserID(ID: any): Observable<any> {
         return this.http.get<any>(
             this.constantService.getUrl(
-                this.constantService.INDIVIDUAL_GET_ALL_POST
+                `${this.constantService.GET_POST_BY_INDIVIDUAL_ID}?id=${ID}`
             )
         );
     }
@@ -172,16 +172,22 @@ export class ActionService {
     getProvidersPostByID(ID: any): Observable<any> {
         return this.http.get<any>(
             this.constantService.getUrl(
-                `${this.constantService.PROVIDER_GET_POST_BY_ID}/${ID}`
+                `${this.constantService.PROVIDER_GET_POST_BY_POST_ID}/${ID}`
             )
         );
     }
 
-    getProvidersAllPost(): Observable<any> {
+    getProvidersPostSByProvidersID(ID: any): Observable<any> {
         return this.http.get<any>(
             this.constantService.getUrl(
-                this.constantService.PROVIDER_GET_ALL_POST
+                `${this.constantService.GET_POST_BY_PROVIDER_ID}?id=${ID}`
             )
+        );
+    }
+
+    getAllPosts(): Observable<any> {
+        return this.http.get<any>(
+            this.constantService.getUrl(`${this.constantService.GET_ALL_POST}`)
         );
     }
 }

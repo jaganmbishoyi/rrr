@@ -1,0 +1,14 @@
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title text-capitalize">{{post?.name}}
+            <span class="badge"
+                [ngClass]="{'badge-primary': post?.type == 'individual','badge-warning': post?.type == 'providers'}">
+                {{post?.type}}
+            </span>
+        </h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{post?.address}}, {{post?.addressType}}</h6>
+        <p class="card-text mb-0 small text-capitalize">Contact Person : {{post?.contactName}}</p>
+        <p class="card-text small">Contact Number : {{post?.contactNumber}}</p>
+        <p class="card-text mb-0 small">Notes : {{post?.notes}}</p>
+    </div>
+</div>

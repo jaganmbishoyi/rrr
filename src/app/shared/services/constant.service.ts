@@ -22,13 +22,15 @@ export class ConstantService {
 
     INDIVIDUAL_ADD_POST = "Individual/AddPost";
     INDIVIDUAL_UPDATE_POST = "Individual/UpdatePost";
-    INDIVIDUAL_GET_ALL_POST = "Individual/GetAllPost";
     INDIVIDUAL_GET_POST_BY_ID = "Individual/GetPost";
+    GET_POST_BY_INDIVIDUAL_ID = "Individual/GetPostedByIndividual";
 
     PROVIDER_ADD_POST = "Providers/AddPost";
     PROVIDER_UPDATE_POST = "Providers/UpdatePost";
-    PROVIDER_GET_ALL_POST = "Providers/GetAllPost";
-    PROVIDER_GET_POST_BY_ID = "Providers/GetPost";
+    PROVIDER_GET_POST_BY_POST_ID = "Providers/GetPost";
+    GET_POST_BY_PROVIDER_ID = "Providers/GetPostedByProvider";
+
+    GET_ALL_POST = "Providers/GetAllPost";
 
     getUrl(path: string, params: string[] = []): string {
         return !params.length

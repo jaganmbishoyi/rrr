@@ -1,1 +1,13 @@
-<p>posts works!</p>
+<div class="row">
+    <div class="col-12 mb-4">
+        <h6>
+            <u>All Posts:</u>
+        </h6>
+    </div>
+    <div class="col-md-4 col-12 mb-3" *ngFor="let post of posts">
+        <app-post-card [post]="post"></app-post-card>
+    </div>
+    <div *ngIf="posts && posts.length ==0" class="col-12 text-center">
+        <h5 class="my-4">No Post Found</h5>
+    </div>
+</div>
