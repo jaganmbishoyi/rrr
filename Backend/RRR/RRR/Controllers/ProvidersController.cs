@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using RRR.Helper;
 using RRR.Models;
 using RRR.Models.EFModels;
 using System;
@@ -14,6 +15,14 @@ namespace RRR.Controllers
     [ApiController]
     public class ProvidersController : ControllerBase
     {
+        private readonly PostHelper postHelper;
+
+        public ProvidersController()
+        {
+            // Need to migrate as dependency injection
+            postHelper = new PostHelper();
+        }
+
         [HttpPost]
         public IActionResult Post([FromBody] Provider provider)
         {
@@ -113,6 +122,46 @@ namespace RRR.Controllers
 
                 return Ok("Updated successfully");
             }
+        }
+
+        [HttpPost]
+        [Route("AddPost")]
+        public IActionResult AddPost([FromBody] Ads ads)
+        {
+            var result = this.postHelper.CreatePost(ads);
+            return Ok(result);
+        }
+
+        [HttpPost]
+        [Route("UpdatePost")]
+        public IActionResult UpdatePost([FromBody] Ads ads)
+        {
+            var result = this.postHelper.UpdatePost(ads);
+            return Ok(result);
+        }
+
+        [HttpPost]
+        [Route("GetPost/{id}")]
+        public IActionResult GetPost(int id)
+        {
+            var result = this.postHelper.GetPost(id);
+            return Ok(result);
+        }
+
+        [HttpPost]
+        [Route("GetAllPost")]
+        public IActionResult GetAllPost()
+        {
+            var result = this.postHelper.GetAllPost();
+            return Ok(result);
+        }
+
+        [HttpPost]
+        [Route("DeletePost")]
+        public IActionResult DeletePost(int id)
+        {
+            var result = this.postHelper.DeletePost(id);
+            return Ok(result);
         }
     }
 }

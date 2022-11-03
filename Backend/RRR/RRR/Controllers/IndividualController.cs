@@ -86,7 +86,7 @@ namespace RRR.Controllers
             return Ok(result);
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("GetPost/{id}")]
         public IActionResult GetPost(int id)
         {
@@ -94,11 +94,19 @@ namespace RRR.Controllers
             return Ok(result);
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("GetAllPost")]
         public IActionResult GetAllPost()
         {
             var result = this.postHelper.GetAllPost();
+            return Ok(result);
+        }
+
+        [HttpPost]
+        [Route("DeletePost")]
+        public IActionResult DeletePost(int id)
+        {
+            var result = this.postHelper.DeletePost(id);
             return Ok(result);
         }
     }

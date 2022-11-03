@@ -79,5 +79,23 @@ namespace RRR.Helper
                 return con.Ads.Where(a => a.ExpiryDate >= DateTime.Now).ToList();
             }
         }
+
+        public bool DeletePost(int id)
+        {
+            using (RRRContext con = new RRRContext())
+            {
+                var ads = con.Ads.FirstOrDefault(a => a.Id == id);
+
+                if (ads is null)
+                {
+                    return false;
+                }
+
+                con.Ads.Remove(ads);
+                con.SaveChanges();
+
+                return true;
+            }
+        }
     }
 }
