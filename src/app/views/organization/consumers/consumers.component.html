@@ -83,12 +83,16 @@
 </div>
 
 <div class="row">
-    <div class="col-12">
+    <div class="col-12 mb-5">
         <h6 class="mb-4"><u>List of Providers:</u></h6>
         <div class="row">
             <div class="col-12 col-md-4 mb-3" *ngFor="let provider of providers">
                 <app-provider-card [provider]="provider"></app-provider-card>
             </div>
         </div>
+    </div>
+
+    <div class="col-12">
+        <app-posts></app-posts>
     </div>
 </div>

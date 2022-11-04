@@ -61,11 +61,11 @@ export class ProvidersComponent implements OnInit, OnDestroy {
     }
 
     createPost(): void {
-        this.router.navigate(["/organization/individual/posts/new"]);
+        this.router.navigate(["/organization/providers/posts/new"]);
     }
 
     allPosts(): void {
-        this.router.navigate(["/organization/individual/posts"]);
+        this.router.navigate(["/organization/providers/posts"]);
     }
 
     getConsumers(): void {

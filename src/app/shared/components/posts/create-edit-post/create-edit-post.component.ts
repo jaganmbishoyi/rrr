@@ -151,6 +151,9 @@ export class CreateEditPostComponent implements OnInit, OnDestroy {
             case "provider":
                 {
                     if (this.form.valid) {
+                        const data = this.form.value;
+                        data.providerId = this.userDetails.id;
+
                         this.subscriptions.add(
                             this.service
                                 .createProvidersPost(this.form.value)
@@ -173,6 +176,9 @@ export class CreateEditPostComponent implements OnInit, OnDestroy {
             case "individual":
                 {
                     if (this.form.valid) {
+                        const data = this.form.value;
+                        data.publicUserId = this.userDetails.id;
+
                         this.subscriptions.add(
                             this.service
                                 .createIndividualPost(this.form.value)

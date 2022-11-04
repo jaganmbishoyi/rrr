@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { Subscription } from "rxjs";
 import { ActionService } from "src/app/shared/services/action.service";
 
@@ -13,7 +14,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     consumers: any[] = [];
     providers: any[] = [];
 
-    constructor(public service: ActionService) {}
+    constructor(public service: ActionService, private router: Router) {}
 
     ngOnInit(): void {
         this.getConsumers();
@@ -34,6 +35,10 @@ export class HomeComponent implements OnInit, OnDestroy {
                 this.providers = res;
             })
         );
+    }
+
+    register(): void {
+        this.router.navigate(["/register"]);
     }
 
     ngOnDestroy(): void {

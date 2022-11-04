@@ -6,12 +6,14 @@ import { PostsComponent } from "./posts/posts.component";
 import { CreateEditPostComponent } from "./posts/create-edit-post/create-edit-post.component";
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { PostCardComponent } from "./posts/post-card/post-card.component";
 
 const components = [
     ProviderCardComponent,
     ConsumerCardComponent,
     PostsComponent,
     CreateEditPostComponent,
+    PostCardComponent,
 ];
 
 @NgModule({

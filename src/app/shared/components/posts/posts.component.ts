@@ -27,7 +27,23 @@ export class PostsComponent implements OnInit, OnDestroy {
             this.portal = "provider";
         }
 
-        this.getAllPosts();
+        this.getPosts();
+    }
+
+    getPosts(): void {
+        if (!this.portal) {
+            this.getAllPostsConsumer();
+        } else {
+            this.getAllPosts();
+        }
+    }
+
+    getAllPostsConsumer(): void {
+        this.subscriptions.add(
+            this.service.getAllPosts().subscribe((res: any) => {
+                this.posts = res;
+            })
+        );
     }
 
     getAllPosts(): void {
@@ -36,7 +52,7 @@ export class PostsComponent implements OnInit, OnDestroy {
                 {
                     this.subscriptions.add(
                         this.service
-                            .getProvidersAllPost()
+                            .getProvidersPostSByProvidersID(this.userDetails.id)
                             .subscribe((res: any) => {
                                 this.posts = res;
                             })
@@ -47,12 +63,23 @@ export class PostsComponent implements OnInit, OnDestroy {
                 {
                     this.subscriptions.add(
                         this.service
-                            .getIndividualAllPost()
+                            .getIndividualPostByUserID(this.userDetails.id)
                             .subscribe((res: any) => {
                                 this.posts = res;
                             })
                     );
                 }
+                break;
+        }
+    }
+
+    back(): void {
+        switch (this.portal) {
+            case "provider":
+                this.router.navigate(["/organization/providers"]);
+                break;
+            case "individual":
+                this.router.navigate(["/organization/individual"]);
                 break;
         }
     }

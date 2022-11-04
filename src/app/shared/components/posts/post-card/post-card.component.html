@@ -1,0 +1,28 @@
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title text-capitalize" *ngIf="post?.providerName !== null">
+            <span>{{post?.providerName}}
+                <span class="badge"
+                [ngClass]="{'badge-primary': post?.type == 'individual','badge-warning': post?.type == 'provider'}">
+                {{post?.type | titlecase}}
+            </span><br> </span>
+            {{post?.name}}
+
+        </h5>
+        <h5 class="card-title text-capitalize" *ngIf="post?.providerName === null">
+            {{post?.name}}
+            <span class="badge"
+                [ngClass]="{'badge-primary': post?.type == 'individual','badge-warning': post?.type == 'provider'}">
+                {{post?.type | titlecase}}
+            </span>
+        </h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{post?.address}}, {{post?.addressType}}</h6>
+        <p class="card-text mb-0 small text-capitalize">Contact Person : {{post?.contactName}}</p>
+        <p class="card-text small">Contact Number : {{post?.contactNumber}}</p>
+        <p class="card-text mb-0 small">Notes : {{post?.notes}}</p>
+        <!-- <div class="map">
+            <p>Location</p>
+            <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.555417765314!2d77.625011!3d12.936271!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1573158df20d%3A0x9ee60d509558761c!2sIMPERIAL%20RESTAURANT!5e0!3m2!1sen!2sin!4v1667504502296!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div> -->
+    </div>
+</div>
